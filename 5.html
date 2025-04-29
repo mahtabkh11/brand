@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal - Mahtab Alyani Trade Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #6a0dad;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            min-height: 100vh;
+            border-radius: 10px 10px 0 0;
+            padding-bottom: 80px;
+            color: #333;
+        }
+        
+        h1 {
+            color: #6a0dad;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .withdrawal-method {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #9b59b6;
+        }
+        
+        .method-title {
+            color: #6a0dad;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .method-title i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .submit-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            background-color: #2ecc71;
+        }
+        
+        .balance-info {
+            background-color: #f0e6ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #9b59b6;
+        }
+        
+        .balance-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6a0dad;
+            margin: 10px 0;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #6a0dad;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 2px solid #9b59b6;
+        }
+        
+        .nav-item {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+        }
+        
+        .nav-item i {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #f39c12;
+        }
+        
+        .investment-status {
+            background-color: #fff4e5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #f39c12;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Withdraw Funds</h1>
+        
+        <div class="balance-info">
+            <p>Available Balance</p>
+            <div class="balance-amount">PKR 20.00</div>
+            <p>Minimum withdrawal: PKR 30</p>
+        </div>
+        
+        <!-- Investment Status -->
+        <div class="investment-status" id="investmentStatus">
+            <p>⚠️ Withdrawals are only available after your investment completes</p>
+        </div>
+        
+        <!-- JazzCash Withdrawal -->
+        <div class="withdrawal-method">
+            <h2 class="method-title">
+                <i>📱</i> JazzCash Withdrawal
+            </h2>
+            <form id="jazzcashForm">
+                <div class="form-group">
+                    <label for="jazzcashNumber">JazzCash Number</label>
+                    <input type="text" id="jazzcashNumber" placeholder="Enter your JazzCash number" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="jazzcashAmount">Amount (PKR)</label>
+                    <input type="number" id="jazzcashAmount" placeholder="Enter amount" min="30" required disabled>
+                </div>
+                <button type="submit" class="submit-btn" disabled>Withdraw via JazzCash</button>
+            </form>
+        </div>
+        
+        <!-- EasyPaisa Withdrawal -->
+        <div class="withdrawal-method">
+            <h2 class="method-title">
+                <i>📱</i> EasyPaisa Withdrawal
+            </h2>
+            <form id="easypaisaForm">
+                <div class="form-group">
+                    <label for="easypaisaNumber">EasyPaisa Number</label>
+                    <input type="text" id="easypaisaNumber" placeholder="Enter your EasyPaisa number" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="easypaisaAmount">Amount (PKR)</label>
+                    <input type="number" id="easypaisaAmount" placeholder="Enter amount" min="30" required disabled>
+                </div>
+                <button type="submit" class="submit-btn" disabled>Withdraw via EasyPaisa</button>
+            </form>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px; color: #6a0dad;">
+            <p>Processing time: 1-3 business days</p>
+            <p>For help, contact support: 03260495803</p>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="navigation">
+        <a href="index.html" class="nav-item">
+            <i>🏠</i>
+            Home
+        </a>
+        <a href="buy.html" class="nav-item">
+            <i>💰</i>
+            Buy
+        </a>
+        <a href="withdraw.html" class="nav-item active">
+            <i>💳</i>
+            Withdraw
+        </a>
+        <a href="invite.html" class="nav-item">
+            <i>👥</i>
+            Invite
+        </a>
+        <a href="account.html" class="nav-item">
+            <i>👤</i>
+            Account
+        </a>
+    </div>
+
+    <script>
+        // Check investment status (this would come from your backend in real implementation)
+        const hasActiveInvestment = false; // Change to true when investment is active
+        
+        function updateWithdrawalStatus() {
+            if (hasActiveInvestment) {
+                document.getElementById('investmentStatus').style.display = 'none';
+                document.querySelectorAll('input, button').forEach(el => {
+                    el.disabled = false;
+                });
+                document.getElementById('jazzcashAmount').min = "30";
+                document.getElementById('easypaisaAmount').min = "30";
+            } else {
+                document.getElementById('investmentStatus').style.display = 'block';
+                document.querySelectorAll('input, button').forEach(el => {
+                    el.disabled = true;
+                });
+            }
+        }
+        
+        // Initialize page
+        updateWithdrawalStatus();
+        
+        // Handle JazzCash form submission
+        document.getElementById('jazzcashForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const number = document.getElementById('jazzcashNumber').value;
+            const amount = document.getElementById('jazzcashAmount').value;
+            
+            if (amount < 30) {
+                alert('Minimum withdrawal amount is PKR 30');
+                return;
+            }
+            
+            // Here you would typically send this data to your server
+            alert(`Withdrawal request for PKR ${amount} to JazzCash ${number} submitted successfully!`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Handle EasyPaisa form submission
+        document.getElementById('easypaisaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const number = document.getElementById('easypaisaNumber').value;
+            const amount = document.getElementById('easypaisaAmount').value;
+            
+            if (amount < 30) {
+                alert('Minimum withdrawal amount is PKR 30');
+                return;
+            }
+            
+            // Here you would typically send this data to your server
+            alert(`Withdrawal request for PKR ${amount} to EasyPaisa ${number} submitted successfully!`);
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

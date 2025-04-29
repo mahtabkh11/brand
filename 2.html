@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahtab Alyani Trade Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a0dad, #9b59b6);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            min-height: 100vh;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            padding-bottom: 80px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 25px 0;
+            border-bottom: 2px solid #f1f1f1;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: linear-gradient(45deg, #6a0dad, #9b59b6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #6a0dad;
+            font-size: 26px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            color: #6a0dad;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        h2 {
+            color: #6a0dad;
+            font-size: 22px;
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+        
+        h3 {
+            color: #9b59b6;
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        
+        .bonus-banner {
+            background: linear-gradient(to right, #9b59b6, #e67e22);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .plan {
+            background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
+            border-radius: 12px;
+            padding: 20px;
+            border: none;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .plan-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #6a0dad;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-title i {
+            margin-right: 10px;
+            color: #9b59b6;
+        }
+        
+        .daily-profit {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e67e22;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .daily-profit i {
+            margin-right: 8px;
+        }
+        
+        .plan-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        
+        .plan-details span:first-child {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .plan-details span:last-child {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .total-profit {
+            font-weight: 700;
+            color: #27ae60;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #9b59b6, transparent);
+            margin: 30px 0;
+            border: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            background-color: white;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #9b59b6, transparent);
+            z-index: 0;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to right, #6a0dad, #9b59b6);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+        }
+        
+        .nav-item {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            flex: 1;
+            max-width: 70px;
+        }
+        
+        .nav-item i {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item.active {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .nav-item.active i {
+            color: #f39c12;
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .nav-item:hover i {
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">MA</div>
+            <h1>Mahtab Alyani</h1>
+            <p class="tagline">Your trusted investment platform</p>
+        </header>
+        
+        <div class="bonus-banner">
+            <h2 style="color: gold;"><i class="fas fa-gift"></i> Signup Bonus: 20 PKR</h2>
+            <p>Limited time offer! Register now to claim your bonus</p>
+        </div>
+        
+        <div class="section-title">
+            <h2>70 Days Investment Plans</h2>
+        </div>
+        
+        <div class="plans-container">
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-coins"></i> 2000 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 156</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">10,920 PKR</span>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-coins"></i> 850 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 67</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">4,690 PKR</span>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-coins"></i> 340 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 30</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">2,100 PKR</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section-title">
+            <h2>Premium Investment Plans</h2>
+        </div>
+        
+        <div class="plans-container">
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-gem"></i> 21,050 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 1,680</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">117,600 PKR</span>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-gem"></i> 9,400 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 750</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">52,500 PKR</span>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-gem"></i> 4,100 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 325</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">22,750 PKR</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section-title">
+            <h2>VIP Investment Plans</h2>
+        </div>
+        
+        <div class="plans-container">
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-crown"></i> 160,000 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 12,020</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">841,400 PKR</span>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-crown"></i> 95,700 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 7,655</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">535,850 PKR</span>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h1 class="plan-title"><i class="fas fa-crown"></i> 45,400 PKR Plan</h1>
+                <h3 class="daily-profit"><i class="fas fa-arrow-up"></i> Daily Rs 3,630</h3>
+                <div class="plan-details">
+                    <span>Plan Duration</span>
+                    <span>70 Days</span>
+                </div>
+                <div class="plan-details">
+                    <span>Total Profit</span>
+                    <span class="total-profit">254,100 PKR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="buy.html" class="nav-item">
+            <i class="fas fa-shopping-cart"></i>
+            Buy
+        </a>
+        <a href="withdraw.html" class="nav-item">
+            <i class="fas fa-wallet"></i>
+            Withdraw
+        </a>
+        <a href="invite.html" class="nav-item">
+            <i class="fas fa-user-plus"></i>
+            Invite
+        </a>
+        <a href="account.html" class="nav-item">
+            <i class="fas fa-user-circle"></i>
+            Account
+        </a>
+    </div>
+
+    <script>
+        // Highlight active navigation item
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            navItems.forEach(item => {
+                if (item.getAttribute('href') === currentPage) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Add animation to plans when they come into view
+            const plans = document.querySelectorAll('.plan');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            plans.forEach(plan => {
+                plan.style.opacity = '0';
+                plan.style.transform = 'translateY(20px)';
+                plan.style.transition = 'all 0.5s ease';
+                observer.observe(plan);
+            });
+        });
+    </script>
+</body>
+</html>

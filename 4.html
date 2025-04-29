@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahtab Alyani - Jazz Cash</title>
+    <style>
+        :root {
+            --primary-purple: #6a0dad;
+            --dark-purple: #4b0082;
+            --light-purple: #9370db;
+            --text-color: #ffffff;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 15px;
+            background: var(--dark-purple);
+            color: var(--text-color);
+        }
+        .header {
+            text-align: right;
+            color: var(--light-purple);
+            margin-bottom: 20px;
+        }
+        .app-title {
+            text-align: center;
+            color: var(--text-color);
+            font-size: 24px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .divider {
+            border-top: 1px solid var(--light-purple);
+            margin: 20px 0;
+        }
+        .deposit-card {
+            background: var(--primary-purple);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .method-title {
+            color: var(--text-color);
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .method-details {
+            background: var(--dark-purple);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .detail-row {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .detail-label {
+            font-weight: bold;
+            width: 120px;
+            color: var(--light-purple);
+        }
+        .copy-btn {
+            background: var(--light-purple);
+            color: var(--dark-purple);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .note {
+            font-size: 14px;
+            color: var(--light-purple);
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--light-purple);
+            border-radius: 5px;
+            box-sizing: border-box;
+            background: var(--dark-purple);
+            color: var(--text-color);
+        }
+        .submit-btn {
+            background: var(--light-purple);
+            color: var(--dark-purple);
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .success-message {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--light-purple);
+            color: var(--dark-purple);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="notification" id="pendingNotification">
+        Payment submitted! Status: Pending
+    </div>
+    
+    <div class="app-title">MAHTAB ALYANI</div>
+    
+    <div class="divider"></div>
+    
+    <div class="deposit-card">
+        <div class="method-title">JAZZ CASH</div>
+        <div class="method-details">
+            <div class="detail-row">
+                <div class="detail-label">Account Name:</div>
+                <div>MUHAMMAD MAHTAB</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Account Number:</div>
+                <div>03260495803</div>
+                <button class="copy-btn" onclick="copyToClipboard('03260495803')">Copy</button>
+            </div>
+        </div>
+        <div class="note">
+            Send your payment to this Jazz Cash account and submit your transaction details below.
+        </div>
+    </div>
+
+    <div class="deposit-card">
+        <div class="method-title">SUBMIT PAYMENT PROOF</div>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label class="form-label">Your Name:</label>
+                <input type="text" class="form-input" id="senderName" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Your Number:</label>
+                <input type="text" class="form-input" id="senderNumber" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Amount Sent (PKR):</label>
+                <input type="number" class="form-input" id="amount" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Transaction ID:</label>
+                <input type="text" class="form-input" id="trxId" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Screenshot (optional):</label>
+                <input type="file" class="form-input" id="screenshot">
+            </div>
+            <button type="submit" class="submit-btn">SUBMIT PAYMENT</button>
+        </form>
+        <div class="success-message" id="successMessage">
+            Payment submitted successfully! We'll verify and update your balance soon.
+        </div>
+    </div>
+
+    <script>
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Number copied to clipboard: " + text);
+            }, function() {
+                prompt("Copy this number:", text);
+            });
+        }
+        
+        // Show notification
+        function showNotification() {
+            const notification = document.getElementById('pendingNotification');
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const senderName = document.getElementById('senderName').value;
+            const senderNumber = document.getElementById('senderNumber').value;
+            const amount = document.getElementById('amount').value;
+            const trxId = document.getElementById('trxId').value;
+            
+            // Show success message
+            document.getElementById('paymentForm').reset();
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Show pending notification
+            showNotification();
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+            
+            // In a real app, you would send this data to your backend:
+            // const formData = {
+            //     senderName: senderName,
+            //     senderNumber: senderNumber,
+            //     amount: amount,
+            //     trxId: trxId,
+            //     status: "Pending",
+            //     timestamp: new Date().toISOString()
+            // };
+            // console.log("Payment details:", formData);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Package - Mahtab Alyani Trade Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a0dad 0%, #8a2be2 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding-bottom: 100px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .package {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .package-title {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .package-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        }
+        
+        .package-detail:last-child {
+            border-bottom: none;
+        }
+        
+        .buy-btn {
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4);
+        }
+        
+        .buy-btn:hover {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(155, 89, 182, 0.6);
+        }
+        
+        .payment-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .payment-info h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .payment-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            margin: 15px 0;
+            color: #f1c40f;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(106, 13, 173, 0.9);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 2px solid #9b59b6;
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-item {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-item i {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item:hover {
+            color: #f1c40f;
+            transform: translateY(-3px);
+        }
+        
+        .active-nav {
+            color: #f1c40f;
+            position: relative;
+        }
+        
+        .active-nav::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #f1c40f;
+            border-radius: 50%;
+        }
+        
+        /* Floating particles for background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-gem"></i> Premium Packages</h1>
+            <p>Choose your investment plan and start earning today</p>
+        </div>
+        
+        <!-- Payment Instructions -->
+        <div class="payment-info">
+            <h3><i class="fas fa-info-circle"></i> Payment Instructions</h3>
+            <p>Send payment to SADAPAY:</p>
+            <p class="highlight">03083389406</p>
+            <p class="highlight">GULAM SHABBAR</p>
+            <p>After payment, select your package and enter transaction details.</p>
+        </div>
+        
+        <!-- Package 1 -->
+        <div class="package">
+            <h2 class="package-title"><i class="fas fa-star"></i> Silver Package</h2>
+            <div class="package-detail">
+                <span><i class="fas fa-tag"></i> Price:</span>
+                <span>PKR 335</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-coins"></i> Daily Profit:</span>
+                <span>PKR 30</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-wallet"></i> Total Profit:</span>
+                <span>PKR 2100</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="far fa-calendar-alt"></i> Plan Validity:</span>
+                <span>70 days</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-users"></i> Referral Bonus:</span>
+                <span>13%, 3%, 2%</span>
+            </div>
+            <button class="buy-btn" onclick="buyPackage(335, 'Silver Package')">
+                <i class="fas fa-shopping-cart"></i> Buy Now
+            </button>
+        </div>
+        
+        <!-- Package 2 -->
+        <div class="package">
+            <h2 class="package-title"><i class="fas fa-crown"></i> Gold Package</h2>
+            <div class="package-detail">
+                <span><i class="fas fa-tag"></i> Price:</span>
+                <span>PKR 840</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-coins"></i> Daily Profit:</span>
+                <span>PKR 67</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-wallet"></i> Total Profit:</span>
+                <span>PKR 4690</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="far fa-calendar-alt"></i> Plan Validity:</span>
+                <span>70 days</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-users"></i> Referral Bonus:</span>
+                <span>12%, 3%, 2%</span>
+            </div>
+            <button class="buy-btn" onclick="buyPackage(840, 'Gold Package')">
+                <i class="fas fa-shopping-cart"></i> Buy Now
+            </button>
+        </div>
+        
+        <!-- Package 3 -->
+        <div class="package">
+            <h2 class="package-title"><i class="fas fa-gem"></i> Diamond Package</h2>
+            <div class="package-detail">
+                <span><i class="fas fa-tag"></i> Price:</span>
+                <span>PKR 1950</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-coins"></i> Daily Profit:</span>
+                <span>PKR 150</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-wallet"></i> Total Profit:</span>
+                <span>PKR 10920</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="far fa-calendar-alt"></i> Plan Validity:</span>
+                <span>70 days</span>
+            </div>
+            <div class="package-detail">
+                <span><i class="fas fa-users"></i> Referral Bonus:</span>
+                <span>13%, 3%, 2%</span>
+            </div>
+            <button class="buy-btn" onclick="buyPackage(1950, 'Diamond Package')">
+                <i class="fas fa-shopping-cart"></i> Buy Now
+            </button>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="navigation">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="buy.html" class="nav-item active-nav">
+            <i class="fas fa-shopping-bag"></i>
+            Buy
+        </a>
+        <a href="withdraw.html" class="nav-item">
+            <i class="fas fa-money-bill-wave"></i>
+            Withdraw
+        </a>
+        <a href="invite.html" class="nav-item">
+            <i class="fas fa-user-friends"></i>
+            Invite
+        </a>
+        <a href="account.html" class="nav-item">
+            <i class="fas fa-user-circle"></i>
+            Account
+        </a>
+    </div>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                const opacity = Math.random() * 0.5 + 0.1;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = opacity;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles when page loads
+        window.onload = function() {
+            createParticles();
+        };
+        
+        function buyPackage(amount, packageName) {
+            // Store package details
+            localStorage.setItem('selectedPackage', amount);
+            localStorage.setItem('packageName', packageName);
+            
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        }
+    </script>
+</body>
+</html>
